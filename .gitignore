@@ -1,2 +1,9 @@
-.idea/
+# JetBrains
+*.iml
+.idea
+
+# Local configuration file
+local.properties
+
+# MacOS
 .DS_Store
