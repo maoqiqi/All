@@ -1,29 +1,25 @@
 # Mac常用设置
 
+
 ## 目录
 
-* [访达没有显示个人用户文件夹](#访达没有显示个人用户文件夹)
-* [Mac如何修改用户名和用户文件夹](#Mac如何修改用户名和用户文件夹)
-* [Mac键盘上的Windows按键介绍](#Mac键盘上的Windows按键介绍)
-* [Mac修饰键](#Mac修饰键)
+* [修饰键](#修饰键)
+* [显示个人用户文件夹](#显示个人用户文件夹)
+* [修改用户名和用户文件夹](#修改用户名和用户文件夹)
+* [修改HostName](#修改HostName)
 
-## 访达没有显示个人用户文件夹
+## 修饰键
+
+
+
+## 显示个人用户文件夹
 
 访达->偏好设置->边栏->用户名打勾。
 
 ![访达](images/finder.png)
 
 
-## Mac键盘上的Windows按键介绍
-
-* Windows按键Control在Mac键盘上相当于Command键。
-* Windows按键Alt在Mac键盘上相当于Option键。
-* Mac键盘上只有一个delete删除键，删除的是光标前一个字符，如果想实现Windows按键del删除后一个字符的功能，需要Fn+Delete组合。
-* Mac键盘上没有Windows按键Home和End，前往当前行的开头或结尾需要使用Command+左箭头键和Command+右箭头键。
-* Windows按键F1-F12使用时要配合FN使用，而Mac键盘上是直接使用的。
-
-
-## Mac如何修改用户名和用户文件夹
+## 修改用户名和用户文件夹
 
 打开终端
 
@@ -50,8 +46,7 @@
     点击右下角小锁（密码应该是无，直接回车就可以了）点+号添加你改名的管理员账号，接着权限改成读与写即可。
 
 
-
-修改HostName
+## 修改HostName
 
 打开终端，执行下面命令，"tmp"是你想要修改的计算机名。
 
@@ -60,5 +55,3 @@ sudo scutil --set HostName tmp
 ```
 
 > 执行过后命令，需要强行退出终端，重新打开就好了。
-
-登录github。打开setting->SSH keys，点击右上角 New SSH key，把生成好的公钥id_rsa.pub放进 key输入框中，再为当前的key起一个title来区分每个key。
