@@ -4,8 +4,8 @@
 
 ## 目录
 
+* [访达没有显示个人用户文件夹](#访达没有显示个人用户文件夹)
 * [AppStore不能下载应用](#AppStore不能下载应用)
-* [finder没有显示个人用户文件夹](#finder没有显示个人用户文件夹)
 * [Mac如何修改用户名和用户文件夹](#Mac如何修改用户名和用户文件夹)
 * [Mac键盘上的Windows按键介绍](#Mac键盘上的Windows按键介绍)
 * [Mac修饰键](#Mac修饰键)
@@ -13,24 +13,27 @@
 * [Mac允许从任何来源下载应用](#Mac允许从任何来源下载应用)
 
 
+## 访达没有显示个人用户文件夹
+
+访达->偏好设置->边栏->用户名打勾。
+
+![访达](images/finder.png)
+
+
 ## AppStore不能下载应用
 
-点击下载输入密码后，提示:**购买过程中出错，未能完成该操作。(com.apple.commerce.client 错误 500。)**
+点击下载输入密码后，提示：**购买过程中出错，未能完成该操作。(com.apple.commerce.client 错误 500。)**
 
 ![app_store_500](images/app_store_500.png)
 
 解决方法：
 
 * 打开终端(启动台->其他->终端)。
-* 复制粘贴`defaults delete com.apple.appstore.commerce Storefront`这段代码,不要作任何更改,哪怕是多余的空格出现。
+* 复制粘贴`defaults delete com.apple.appstore.commerce Storefront`这段代码,不作任何更改。
 * 回车,重启后,再利用AppleId登录App Store即可。
 
 如果上述步骤,未能解决该问题,建议联系技术支持部门。
 
-
-## finder没有显示个人用户文件夹
-
-finder->偏好设置->边栏->用户名打勾。
 
 
 ## Mac如何修改用户名和用户文件夹
