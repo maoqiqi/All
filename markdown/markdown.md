@@ -1,7 +1,7 @@
 # Markdown 语法简单教程
 
 Markdown 是一种方便记忆、书写的纯文本标记语言，用户可以使用这些标记符号以最小的输入代价生成极富表现力的文档。
-[官方文档](https://daringfireball.net/projects/markdown/syntax)。
+[参考文档](https://daringfireball.net/projects/markdown/syntax)。
 
 
 ## 目录
