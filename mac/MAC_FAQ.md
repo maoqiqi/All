@@ -12,17 +12,20 @@
 * [Mac打不开pkg因为它来自身份不明的开发者](#打不开pkg因为它来自身份不明的开发者)
 * [Mac允许从任何来源下载应用](#Mac允许从任何来源下载应用)
 
+
 ## AppStore不能下载应用
 
-点击下载输入密码后，提示：购买过程中出错，未能完成该操作。（com.apple.commerce.client 错误 500。）
+点击下载输入密码后，提示:`购买过程中出错，未能完成该操作。(com.apple.commerce.client 错误 500。)`
 
 ![app_store_500](images/app_store_500.png)
 
-* 打开“启动台”->打开“其他”->打开“终端”。
-* 复制粘贴`defaults delete com.apple.appstore.commerce Storefront`这段代码，不要作任何更改，哪怕是多余的空格出现。
-* 回车，重启后，再利用AppleId登录app store即可。
+解决方法：
 
-如果上述步骤，未能解决该问题，建议联系技术支持部门。
+* 打开终端(启动台->其他->终端)。
+* 复制粘贴`defaults delete com.apple.appstore.commerce Storefront`这段代码,不要作任何更改,哪怕是多余的空格出现。
+* 回车,重启后,再利用AppleId登录App Store即可。
+
+如果上述步骤,未能解决该问题,建议联系技术支持部门。
 
 
 ## finder没有显示个人用户文件夹
