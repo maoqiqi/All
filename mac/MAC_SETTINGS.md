@@ -9,8 +9,9 @@
 * [修改用户名和用户文件夹](#修改用户名和用户文件夹)
 * [修改HostName](#修改HostName)
 * [Sudo免密码设置](#Sudo免密码设置)
+* [Donate](#Donate)
 * [About](#About)
-* [License](#License)
+* [License](#License)  
 
 
 ## 系统设置
@@ -100,6 +101,13 @@ sudo scutil --set HostName tmp
 * 替换 #%username ALL=(ALL) ALL 为:`%username ALL=(ALL) NOPASSWD: ALL`
 
 > username为当前登录用户名
+
+
+## Donate
+
+感谢您的耐心阅读，如果您发现文章中有一些没表述清楚的，或者是不对的地方，请给我留言，你的鼓励是作者写作最大的动力。
+
+如果您认为本文质量不错，读后觉得收获很大，不妨小额赞助我一下，让我更有动力继续写出高质量的文章。
 
 
 ## About

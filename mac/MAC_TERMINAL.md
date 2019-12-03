@@ -25,8 +25,9 @@
   * [vim环境设置与记录](#vim环境设置与记录)
 * [git](#git)
 * [临时上传下载文件](#临时上传下载文件)
+* [Donate](#Donate)
 * [About](#About)
-* [License](#License)
+* [License](#License)  
 
 
 ## brew
@@ -2081,6 +2082,13 @@ this is a secret pw
 curl https://file.io/pgiPc2
 {"success":false,"error":404,"message":"Not Found"}
 ```
+
+
+## Donate
+
+感谢您的耐心阅读，如果您发现文章中有一些没表述清楚的，或者是不对的地方，请给我留言，你的鼓励是作者写作最大的动力。
+
+如果您认为本文质量不错，读后觉得收获很大，不妨小额赞助我一下，让我更有动力继续写出高质量的文章。
 
 
 ## About
