@@ -5,7 +5,6 @@
 
 ## 目录
 
-* [Mac开发前需做的系统设置](#Mac开发前需做的系统设置)
 * [必装软件清单](#必装软件清单)
 * [brew](#brew)
 * [iTerm2](#iTerm2)
@@ -28,7 +27,6 @@
   * [vim的警告信息](#vim的警告信息)
   * [vim环境设置与记录](#vim环境设置与记录)
 * [git](#git)
-* [Sudo免密码设置](#Sudo免密码设置)
 * [临时上传下载文件](#临时上传下载文件)
 * [About](#About)
 * [License](#License)
@@ -2087,14 +2085,6 @@ git config --global credential.helper osxkeychain
 ```
 
 此外，如果你打算使用 SSH 方式，可以参考此[链接](https://help.github.com/en/github/authenticating-to-github/connecting-to-github-with-ssh).
-
-
-## Sudo免密码设置
-
-* 打开命令窗口输入如下命令：`sudo visudo`
-* 替换 #%username ALL=(ALL) ALL 为:`%username ALL=(ALL) NOPASSWD: ALL`
-
-> username为当前登录用户名
 
 
 ## 临时上传下载文件
