@@ -15,7 +15,7 @@
 
 ## AppStore不能下载应用
 
-点击下载输入密码后，提示:`购买过程中出错，未能完成该操作。(com.apple.commerce.client 错误 500。)`
+点击下载输入密码后，提示:**购买过程中出错，未能完成该操作。(com.apple.commerce.client 错误 500。)**
 
 ![app_store_500](images/app_store_500.png)
 
