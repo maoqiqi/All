@@ -43,6 +43,18 @@ IntelliJ IDEA 的安装是非常简单的，不需要做过多的选择，可以
 
 ## Mac系统
 
+Mac下安装安装 IntelliJ IDEA 与安装其他软件一样，不在叙述。
+
+> 目前的最新 IntelliJ IDEA 版本已经默认都是使用它自己带的 JDK 环境。
+
+![使用自己的JDK](images/idea_mac_jdk.png)
+
+如果你的 Mac 安装有多个 JDK，你想使用高版本的 JDK 运行 IntelliJ IDEA 可以按如下方式进行修改：
+
+* 在 `应用程序` 中找到 `IntelliJ IDEA` 然后对此进行 `右键 > 显示包内容 > Contents > Info.plist`，效果如上图所示。
+* 找到上图红圈标注的代码，修改 `JVMVersion` 的属性值，如果是 JDK 7，则改为 `1.7*`。如果是 JDK 8，则改为 `1.8*`。
+
+
 ## Ubuntu系统
 
 
