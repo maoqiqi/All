@@ -7,6 +7,9 @@
 
 * [安装 IntelliJ IDEA](INSTALL.md)
 * [首次使用的基础设置](BASIC_SETTING.md)
+* [项目相关的几个重要概念说明](COMPOSITION.md)
+* [缓存和索引介绍和清理方法](CACHE.md)
+* [编译方式介绍](COMPILE.md)
 * [更多官方学习信息](#更多官方学习信息)
 * [更多官方资讯跟踪途径](#更多官方资讯跟踪途径)
 
