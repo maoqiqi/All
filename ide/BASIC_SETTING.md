@@ -2,14 +2,22 @@
 
 ## 目录
 
-* [界面介绍](#界面介绍)
+* [UI界面](#UI界面)
+  * [首次打开](#首次打开)
+  * [新建HTML项目](#新建HTML项目)
+  * [界面介绍](#界面介绍)
 * [设置](#设置)
+  * [主题](#主题)
+  * [字体](#字体)
+  * [编辑区主题](#编辑区主题)
+  * [文件编码](#文件编码)
+  * [乱码问题](#乱码问题)
 * [Donate](#Donate)
 * [About](#About)
 * [License](#License)
 
 
-## 界面介绍
+## UI界面
 
 ### 首次打开
 
@@ -23,7 +31,7 @@
 
 为了介绍 IntelliJ IDEA 界面，我们这里创建一个新 HTML 项目。
 
-### 新建 HTML 项目
+### 新建HTML项目
 
 ![新建 HTML 项目](images/idea_interface_introduce_2.jpg)
 
@@ -43,6 +51,20 @@
 ![界面介绍](images/idea_interface_introduce_6.jpg)
 
 如上图①所示为开启 `Toolbar` 和 `Tool Buttons` 效果。
+
+
+## 设置
+
+### 主题
+
+### 字体
+
+### 编辑区主题
+
+### 文件编码
+
+### 乱码问题
+
 
 
 ## Donate
