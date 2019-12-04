@@ -41,7 +41,7 @@
 > * 该项目的 `Project` 命名是：spring-framework。该目录主要作用为各个 `Module` 的顶层目录进行约束，告诉协同者，这个目录下都是 `spring-framework` 相关的，我绝不会放 Android 相关源码、文档、文件在上面的。该目录并不是以一个实际性的目录来体现的，所以你访问主页是看不到的，但是当你 `checkout` 的时候，你必须为这个项目命名，至于命名默认就是 `spring-framework`。
 > * 该 `Project` 下有二十来个 `Module`，各个 `Module` 的命名也是有含义的，比如：`spring-core`、`spring-jdbc`、`spring-jms`、`spring-orm`、`spring-web`、`spring-webmvc` 等等，我们通过这些命名也能清楚地知道他们要表达的含义，这些 Module 下也都各自有 `src` 编码目录，可以自行编码和构建。
 
-![Project 和 Module 介绍](images/xiv-a-project-and-module-introduce-1.gif)
+![Project 和 Module 介绍](images/idea_composition_1.gif)
 
 > * 相比较于多 Module 项目，小项目就无需搞得这么复杂。只有一个 Module 的结构 IntelliJ IDEA 也是支持的，并且 IntelliJ IDEA 创建项目的时候，默认就是单 Module 的结构的。
 > * 如上图 Gif 图演示，在输入 `Project name` 的时候，`Module name` 和 `Module file Location` 自动进行改变，同时 `Project location` 和 `Module file Location` 完全一样，这也就表示，Project 目录和 Module 目录是同一个，所以此时 Project 目录下就会有 `src` 目录，但是我们应该明白其本质还是 Module 的目录。
@@ -55,13 +55,13 @@
 
 ## SDK（Software Development Kit） 介绍
 
-![SDK 介绍](images/xiv-b-sdk-introduce-1.jpg)
+![SDK 介绍](images/idea_sdk_introduce_1.jpg)
 
 > * 按 `Ctrl + Shift + Alt + S` 弹出项目结构设置区，如上图所示。
 > * 如上图标注 1 所示，IntelliJ IDEA 支持 6 种 SDK。最常用的就是 `JDK` 和 `Android SDK`，其中在创建 `Android SDK` 的时候如果你没有先配置一个 `JDK` 的话，IntelliJ IDEA 则会提示你要先配置一个 `JDK`，然后才能配置 `Android SDK`。
 > * 如上图标注 2 所示，下拉会展示已经创建的所有 SDK，可以很方便地不同 SDK 中切换。在开发 Java 项目过程中，由于 IntelliJ IDEA 支持管理多个 `JDK`，所以你完全不用担心你系统上不同项目需要不同 `JDK`。
 
-![SDK 介绍](images/xiv-b-sdk-introduce-2.jpg)
+![SDK 介绍](images/idea_sdk_introduce_2.jpg)
 
 > * 如上图标注 1 所示，`SDKs` 为 SDK 的统一管理处。
 > * 如上图标注 2 所示，加号可以添加新 SDK，支持的类型如标注 3 所示；减号可以删除光标所选的 SDK。
@@ -78,9 +78,9 @@
 >
 >> * `etc. == et cetera == and so on == 等等`
 
-![language level 介绍](images/xiv-c-language-level-introduce-1.jpg)
+![language level 介绍](images/idea_language_level_1.jpg)
 
-![language level 介绍](images/xiv-c-language-level-introduce-2.jpg)
+![language level 介绍](images/idea_language_level_2.jpg)
 
 > * 如上第一张图标注 1，使用的是 JDK 7，显示的 `SDK default` 为 `7 - Diamonds，ARM，multi-catch etc.`
 > * 如上第二张图标注 1，使用的是 JDK 8，显示的 `SDK default` 为 `8 - Lambdas，type annotation etc.`
@@ -95,11 +95,11 @@
 
 对于大型项目，各个 Module 用到的 `SDK` 和 `language level` 很有可能是各不一样的，IntelliJ IDEA 对此也进行了支持。
  
-![Module 下的 SDK 和 language level](images/xiv-d-module-setting-2.jpg)
+![Module 下的 SDK 和 language level](images/idea_module_setting_1.jpg)
 
 > * 如上图标注 1 所示，可以针对 Module 选择其他 SDK，默认选择的是 `Project SDK`
 
-![Module 下的 SDK 和 language level](images/xiv-d-module-setting-1.jpg)
+![Module 下的 SDK 和 language level](images/idea_module_setting_2.jpg)
 
 > * 如上图标注 1 所示，可以针对 Module 选择其他 `language level`，默认选择的是 `Project language level`
  
