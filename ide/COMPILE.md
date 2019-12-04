@@ -11,7 +11,7 @@
 
 ## 编译触发按钮
 
-![IntelliJ IDEA 编译触发按钮](images/xiii-a-make-introduce-1.jpg)
+![IntelliJ IDEA 编译触发按钮](images/idea_compile_introduce_1.jpg)
 
 > * 如上图标注 1 所示，Make 的操作有：`Make Project`、`Make Module`
 > * 如上图标注 2 所示，Compile 的操作有：`Compile` 指定类
@@ -20,28 +20,28 @@
 
 ## 运行之前的编译
  
-![IntelliJ IDEA 运行之前的编译](images/xiii-b-befour-launch-1.jpg)
+![IntelliJ IDEA 运行之前的编译](images/idea_befour_launch_1.jpg)
 
 > * 如上图所示，IntelliJ IDEA 默认在运行 JUnit 之前会先进行 `Make` 操作。
 
-![IntelliJ IDEA 运行之前的编译](images/xiii-b-befour-launch-2.jpg)
+![IntelliJ IDEA 运行之前的编译](images/idea_befour_launch_2.jpg)
 
 > * 如上图所示，IntelliJ IDEA 默认在运行 tomcat 之前会先进行 `Make` 操作。
 
 ## 编译器的设置和选择
 
-![编译器的设置和选择](images/xiii-c-compiler-setting-1.jpg)
+![编译器的设置和选择](images/idea_compiler_setting_1.jpg)
 
 > * 上图标注 1 所示，也是我们本文前面讲的，IntelliJ IDEA 是支持自动编译的，默认是不开启的，也建议不用开启，原因前面已经说了。
 > * 上图标注 2 所示，设置编译 `heap` 大小，默认是 `700`，建议使用 64 位的用户，在内存足够的情况下，建议改为 `1500` 或以上。如果你在编译的时候出错，报：`OutOfMemoryError`，一般也是要来改这个地方。
 > * 上图标注 3 所示，还可以设置编译时的 `VM` 参数，这个你可以根据需求进行设置，一般人是用不上的。
 
-![编译器的设置和选择](images/xiii-c-compiler-setting-2.jpg)
+![编译器的设置和选择](images/idea_compiler_setting_2.jpg)
 
 > * 如上图标注 1 所示，可以添加目录 或 文件进行编译排除。
 > * 在项目中，如果有任何一个可编译的文件无法编译通过，则 IntelliJ IDEA 是无法运行起来的，必须等你全部问题解决，编译通过之后才可运行。但是可能开发过程中，某一个包目录的文件编译无法通过，但是我们又不急着改，那我们就可以考虑把该包加入到排除编译列表中，则项目就可以运行起来。
 
-![编译器的设置和选择](images/xiii-c-compiler-setting-3.gif)
+![编译器的设置和选择](images/idea_compiler_setting_3.gif)
 
 > * 如上图动态 Gif 所示，IntelliJ IDEA 支持常见的几种编译器：`Javac`、`Eclipse`、`Ajc` 等。默认是 `Javac`，也推荐使用 `Javac`。
 > * `Project bytecode version` 针对项目字节码编译版本，一般选择的是当前项目主 JDK 的版本。
