@@ -1,7 +1,5 @@
 # Golang
 
-Go是一种新的语言，一种并发的、带垃圾回收的、快速编译的语言。
-
 > * **作者**：March
 > * **邮箱**：fengqi.mao.march@gmail.com
 > * **码云**：https://gitee.com/maofengqi
