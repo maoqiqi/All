@@ -62,7 +62,7 @@ Go语言作为一门全新的静态类型开发语言,与当前的开发语言�
   Go语言引入了goroutine概念,它使得并发编程变得非常简单。通过使用goroutine而不是裸用操作系统的并发机制,
   以及使用消息传递来共享内存而不是使用共享内存来通信,Go语言让并发编程变得更加轻盈和安全。
   
-  ```go
+  ```
   func sum(values [] int, resultChan chan int) {
   	sum := 0
   	for _, value := range values {
@@ -90,7 +90,7 @@ Go语言作为一门全新的静态类型开发语言,与当前的开发语言�
 
 ### 第一个Go程序
 
-```go
+```
 package main
 
 import "fmt" // 我们需要使用fmt包中的Println()函数
@@ -107,7 +107,7 @@ func main() {
 
 1.变量声明
 
-```go
+```
 var v1 int             // int(默认为0)
 var v2 string          // 字符串(默认为空字符串)
 var v3 [10]int         // 数组(元素全部为0的数组)
@@ -125,7 +125,7 @@ var v8 func(a int) int // 函数(默认为nil)
 
 2.变量赋值
 
-```go
+```
 v1 = 10
 v2 = "hello"
 v3[0] = 3
@@ -139,7 +139,7 @@ v7["key"] = 10
 
 Go语言的变量赋值与多数语言一致,但Go语言中提供了C/C++程序员期盼多年的多重赋值功能,比如下面这个交换i和j变量的语句:
 
-```go
+```
 i, j = j, i
 ```
 
@@ -151,7 +151,7 @@ t = i; i = j; j = t;
 
 3.变量初始化
 
-```go
+```
 var var1 int = 10 // 正确的使用方式1
 var var2 = 11     // 正确的使用方式2,编译器可以自动推导出var2的类型
 var3 := 12        // 正确的使用方式3,编译器可以自动推导出var3的类型
@@ -165,7 +165,7 @@ fmt.Println(var1, var2, var3)
 
 假设GetName()函数的定义如下,它返回3个值,分别为firstName、lastName和 nickName:
 
-```go
+```
 func GetName() (firstName, lastName, nickName string) {
 	return "May", "Chan", "Chibi Maruko"
 }
@@ -173,7 +173,7 @@ func GetName() (firstName, lastName, nickName string) {
 
 若只想获得nickName,则函数调用语句可以用如下方式编写:
 
-```go
+```
 _, _, nickName := GetName()
 ```
 
@@ -189,7 +189,7 @@ _, _, nickName := GetName()
 
 通过const关键字,你可以给字面常量指定一个友好的名字:
 
-```go
+```
 const Pi float64 = 3.14159265358979323846
 const zero = 0.0 // 无类型浮点常量
 const (
@@ -204,13 +204,13 @@ Go的常量定义可以限定常量类型,但不是必需的。如果定义常�
 
 常量定义的右值也可以是一个在编译期运算的常量表达式,比如
 
-```go
+```
 const mask = 1 << 3
 ```
 
 由于常量的赋值是一个编译期行为,所以右值不能出现任何需要运行期才能得出结果的表达式,比如试图以如下方式定义常量就会导致编译错误:
 
-```go
+```
 const Home = os.GetEnv("HOME")
 ```
 
@@ -223,7 +223,7 @@ Go语言预定义了这些常量:true、false和iota。
 iota比较特殊,可以被认为是一个可被编译器修改的常量,在每一个const关键字出现时被重置为0,然后在下一个const出现之前,
 每出现一次iota,其所代表的数字会自动增1。例如：
 
-```go
+```
 const (
     c0 = iota
     c1
@@ -253,7 +253,7 @@ fmt.Println(c0, c1, c2, a, b, c, u, v, w, x, y)
 
 枚举指一系列相关的常量,比如下面关于一个星期中每天的定义。
 
-```go
+```
 const (
     Sunday       = iota
     Monday
@@ -293,7 +293,7 @@ Go语言内置以下这些基础类型:
     两个不同类型的整型数不能直接比较,比如int8类型的数和int类型的数不能直接比较,但各种类型的整型变量都可以直接与
     字面常量(literal)进行比较,比如:
     
-    ```go
+    ```
     var i int32
     var j int64
     i, j = 1, 2
@@ -321,7 +321,7 @@ Go语言内置以下这些基础类型:
   
   下面是一种推荐替代方案方:
   
-  ```go
+  ```
   // p 为用户自定义的比较精度,比如: 0.00001
   func IsEqual(f1, f2, p float64) bool {
   	return math.Dim(f1, f2) < p
@@ -343,7 +343,7 @@ Go语言内置以下这些基础类型:
   
   复数实际上由两个实数(在计算机中用浮点数表示)构成,一个表示实部(real),一个表示虚部(imag)。
   
-  ```go
+  ```
   var value1 complex64 // 由2个float32构成的复数类型
   value1 = 3.2 + 12i
   value2 := 3.2 + 12i        // value2 是 complex128 类型
@@ -363,7 +363,7 @@ Go语言内置以下这些基础类型:
   
   Go语言支持两种方式遍历字符串。一种是以字节数组的方式遍历:
   
-  ```go
+  ```
   str := "Hello,世界"
   n := len(str)
   fmt.Println("len=", n)
@@ -377,7 +377,7 @@ Go语言内置以下这些基础类型:
   
   这个例子的 出结果为:
   
-  ```go
+  ```
   0 72
   1 101
   2 108
@@ -396,7 +396,7 @@ Go语言内置以下这些基础类型:
   
   另一种是以Unicode字符遍历:
   
-  ```go
+  ```
   str := "Hello,世界"
   n := len(str)
   fmt.Println("len=", n)
@@ -409,7 +409,7 @@ Go语言内置以下这些基础类型:
   
   输出结果为:
   
-  ```go
+  ```
   0 72 H
   1 101 e
   2 108 l
@@ -430,7 +430,7 @@ Go语言内置以下这些基础类型:
   
   Go语言引入了一个关于错误处理的标准模式, error接口,该接口的定义如下:
   
-  ```go
+  ```
   type error interface {
   	Error() string
   }
@@ -438,7 +438,7 @@ Go语言内置以下这些基础类型:
   
   下面我用Go库中的实际代码来示范如何使用自定义的error类型。
   
-  ```go
+  ```
   type PathError struct {
   	Op   string
   	Path string
@@ -463,7 +463,7 @@ Go语言内置以下这些基础类型:
   如果将数组作为函数的参数类型,则在函数调用时该参数将发生数据复制。因此,在函数体中无法修改传入的数组的内容,因为函数内操作
   的只是所传入数组的一个副本。例如：
   
-  ```go
+  ```
   func modify(array [10]int) {
   	array[0] = 10 // 试图修改数组的第一个元素
   	fmt.Println("In modify(), array values:", array)
@@ -485,7 +485,7 @@ Go语言内置以下这些基础类型:
   可动态增减元素是数组切片比数组更为强大的功能。与数组相比,数组切片多了一个存储能力(capacity)的概念, 元素个数和分配的空间可以是
   两个不同的值。合理地设置存储能力的值,可以大大降低数组切片内部重新分配内存和搬送内存块的效率,从而大大提高程序性能。
   
-  ```go
+  ```
   /*
   基于数组创建数组切片
    */
@@ -580,7 +580,7 @@ Go语言内置以下这些基础类型:
   
   map是一堆键值对的未排序集合。
   
-  ```go
+  ```
   // 1.变量声明
   var personDB map[string]PersonInfo
   // 2.创建
@@ -660,7 +660,7 @@ Go语言支持如下的几种流程控制语句:
   
   匿名函数可以直接赋值给一个变量或者直接执行。
   
-  ```go
+  ```
   f := func(x, y int) int {
   	return x + y
   }
@@ -681,7 +681,7 @@ Go语言支持如下的几种流程控制语句:
   
   Go语言中的闭包同样也会引用到函数外的变量。闭包的实现确保只要闭包还被使用,那么被闭包引用的变量会一直存在。
   
-  ```go
+  ```
   var j int = 5
   a := func() (func()) {
   	var i int = 10
@@ -700,7 +700,7 @@ Go语言支持如下的几种流程控制语句:
   
 * defer
   
-  ```go
+  ```
   func CopyFile(dst, src string) (w int64, err error) {
   	srcFile, err := os.Open(src)
   	if err != nil {
@@ -725,7 +725,7 @@ Go语言支持如下的几种流程控制语句:
 
   Go语言引入了两个内置函数panic()和recover()以报告和处理运行时错误和程序中的错误场景：
   
-  ```go
+  ```
   func panic(v interface{})
   func recover() interface{}
   ```
@@ -742,7 +742,7 @@ Go语言支持如下的几种流程控制语句:
   我们对于foo()函数的执行要么心里没底感觉可能会触发错误处理,或者自己在其中明确加入了特定条件触发错误处理的语句,那么可以用如下方式
   在调用代码中截取recover()
   
-  ```go
+  ```
   func main() {
   	defer func() {
   		if r := recover(); r != nil {
@@ -788,7 +788,7 @@ Go语言支持如下的几种流程控制语句:
 
 在Go语言中,一个类只需要实现了接口要求的所有函数,我们就说这个类实现了该接口。
 
-```go
+```
 type IFile interface {
 	Read(buf []byte) (n int, err error)
 	Write(buf []byte) (n int, err error)
@@ -844,7 +844,7 @@ func main() {
 * 将对象实例赋值给接口。这要求该对象实例实现了接口要求的所有方法。
 * 将一个接口赋值给另一个接口。在Go语言中,只要两个接口拥有相同的方法列表(次序不同不要 ),那么它们就是等同的,可以相互赋值。
 
-```go
+```
 type Integer int
 
 func (a Integer) Less(b Integer) bool {
@@ -875,7 +875,7 @@ func main() {
 }
 ```
 
-```go
+```
 type ReadWriter interface {
 	Read(buf []byte) (n int, err error)
 	Write(buf []byte) (n int, err error)
@@ -907,7 +907,7 @@ func main() {
 
 在Go语言中,还可以更加直截了当地询问接口指向的对象实例的类型。
 
-```go
+```
 switch file1.(type) {
 case int:
 	fmt.Println("int")
@@ -938,7 +938,7 @@ Any类型
 
 ### goroutine
 
-```go
+```
 func Add(x, y int) {
 	z := x + y
 	fmt.Println(z)
@@ -963,7 +963,7 @@ Go程序从初始化main package并执行main()函数开始,当main()函数返�
 共享数据是指多个并发单元分别保持对同一个数据的引用,实现对该数据的共享。被共享的数据可能有多种形式,比如内存数据块、磁盘文件、
 网络数据等。在实际工程应用中最常见的无无疑是内存了,也就是常说的共享内存。
 
-```go
+```
 import "fmt"
 import "sync"
 import "runtime"
@@ -1004,7 +1004,7 @@ channel是进程内的通信方式,因此通过channel传递对象的过程和�
 
 channel是类型相关的。也就是说,一个channel只能传递一种类型的值,这个类型需要在声明channel时指定。
 
-```go
+```
 
 ```
 
@@ -1014,7 +1014,7 @@ select
 
 超时机制
 
-```go
+```
 func main() {
 	timeout := make(chan bool, 1)
 	ch := make(chan int)
