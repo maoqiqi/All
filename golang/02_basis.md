@@ -1,14 +1,5 @@
 # Go语言基础
 
-Go是一门类似C的编译型语言,但是它的编译速度非常快。这门语言的关键字总共也就二十五个,比英文字母还少一个。先让我们看一眼这些关键字都长什么样：
-
-    break    default      func    interface    select
-    case     defer        go      map          struct
-    chan     else         goto    package      switch
-    const    fallthrough  if      range        type
-    continue for          import  return       var
-
-    
 ## 目录
 
 * [你好Go](#你好Go)
@@ -68,7 +59,7 @@ Go是一门类似C的编译型语言,但是它的编译速度非常快。这门�
   * [Select](#Select)
   * [超时](#超时)
   * [runtime包goroutine函数](#runtime包goroutine函数)
-* 小结
+* [小结](#小结)
 
 
 ## 你好Go
@@ -2518,3 +2509,33 @@ runtime包中有几个处理goroutine的函数:
 * NumCPU:返回 CPU 核数量
 * NumGoroutine:返回正在执行和排队的任务总数
 * GOMAXPROCS:用来设置可以并行计算的CPU核数的最大值,并返回之前的值
+
+
+## 小结
+
+# Go语言基础
+
+这一章我们主要介绍了Go语言的一些语法,通过语法我们可以发现Go是多么的简单,这门语言的关键字总共也就二十五个,比英文字母还少一个。让我们再来回顾一下这些关键字都是用来干什么的：
+
+    break    default      func    interface    select
+    case     defer        go      map          struct
+    chan     else         goto    package      switch
+    const    fallthrough  if      range        type
+    continue for          import  return       var
+
+* var和const 变量和常量申明
+* package和import已经有过短暂的接触
+* func 用于定义函数和方法
+* return 用于从函数返回
+* defer 用于类似析构函数
+* go 用于并发
+* select 用于选择不同类型的通讯
+* interface 用于定义接口
+* struct 用于定义抽象数据类型
+* break、case、continue、for、fallthrough、else、if、switch、goto、default这些参考流程和函数里面
+* chan用于channel通讯
+* type用于声明自定义类型
+* map用于声明map类型数据
+* range用于读取slice、map、channel数据
+
+上面这二十五个关键字记住了,那么Go你也已经差不多学会了。
