@@ -16,10 +16,9 @@
   * [日期和时间](#日期和时间)
   * [身份证号码](#身份证号码)
 * [预防跨站脚本](#预防跨站脚本)
-* 防止多次递交表单
-* 处理文件上传
-* 小结
-
+* [防止多次递交表单](#防止多次递交表单)
+* [处理文件上传](#处理文件上传)
+  * [客户端上传文件](#客户端上传文件)
 
 ## 处理表单的输入
 
@@ -412,3 +411,223 @@ err = t.ExecuteTemplate(out, "T", "<script>alert('you have been pwned')</script>
 ```
 Hello, &lt;script&gt;alert(&#39;you have been pwned&#39;)&lt;/script&gt;!
 ```
+
+
+## 防止多次递交表单
+
+不知道你是否曾经看到过一个论坛或者博客,在一个帖子或者文章后面出现多条重复的记录,这些大多数是因为用户重复递交了留言的表单引起的。
+由于种种原因,用户经常会重复递交表单。通常这只是鼠标的误操作,如双击了递交按钮,也可能是为了编辑或者再次核对填写过的信息,点击了浏览器的后退按钮,
+然后又再次点击了递交按钮而不是浏览器的前进按钮。当然,也可能是故意的——比如,在某项在线调查或者博彩活动中重复投票。那我们如何有效的防止用户多次递交相同的表单呢？
+
+解决方案是在表单中添加一个带有唯一值的隐藏字段。在验证表单时,先检查带有该唯一值的表单是否已经递交过了。如果是,拒绝再次递交；如果不是,则处理表单进行逻辑处理。
+另外,如果是采用了Ajax模式递交表单的话,当表单递交后,通过javascript来禁用表单的递交按钮。
+
+```
+<input type="checkbox" name="interest" value="football">足球
+<input type="checkbox" name="interest" value="basketball">篮球
+<input type="checkbox" name="interest" value="tennis">网球	
+用户名:<input type="text" name="username">
+密码:<input type="password" name="password">
+<input type="hidden" name="token" value="{{.}}">
+<input type="submit" value="登陆">
+```
+
+我们在模版里面增加了一个隐藏字段`token`,这个值我们通过MD5(时间戳)来获取唯一值,然后我们把这个值存储到服务器端(session来控制,我们将在第六章讲解如何保存),以方便表单提交时比对判定。
+
+```
+func login(w http.ResponseWriter, r *http.Request) {
+	fmt.Println("method:", r.Method) // 获取请求的方法
+	if r.Method == "GET" {
+		crutime := time.Now().Unix()
+		h := md5.New()
+		io.WriteString(h, strconv.FormatInt(crutime, 10))
+		token := fmt.Sprintf("%x", h.Sum(nil))
+
+		t, _ := template.ParseFiles("login.gtpl")
+		t.Execute(w, token)
+	} else {
+		//请求的是登陆数据,那么执行登陆的逻辑判断
+		r.ParseForm()
+		token := r.Form.Get("token")
+		if token != "" {
+			//验证token的合法性
+		} else {
+			//不存在token报错
+		}
+		fmt.Println("username length:", len(r.Form["username"][0]))
+		fmt.Println("username:", template.HTMLEscapeString(r.Form.Get("username"))) //输出到服务器端
+		fmt.Println("password:", template.HTMLEscapeString(r.Form.Get("password")))
+		template.HTMLEscape(w, []byte(r.Form.Get("username"))) //输出到客户端
+	}
+}
+```
+
+上面的代码输出到页面的源码如下：
+
+![增加token之后在客户端输出的源码信息](images/form_token.png?raw=true) 
+
+我们看到token已经有输出值,你可以不断的刷新,可以看到这个值在不断的变化。这样就保证了每次显示form表单的时候都是唯一的,用户递交的表单保持了唯一性。
+
+我们的解决方案可以防止非恶意的攻击,并能使恶意用户暂时不知所措,然后,它却不能排除所有的欺骗性的动机,对此类情况还需要更复杂的工作。
+
+
+## 处理文件上传
+
+你想处理一个由用户上传的文件,比如你正在建设一个类似Instagram的网站,你需要存储用户拍摄的照片。这种需求该如何实现呢？
+
+要使表单能够上传文件,首先第一步就是要添加form的`enctype`属性,`enctype`属性有如下三种情况:
+
+```
+application/x-www-form-urlencoded   表示在发送前编码所有字符(默认)
+multipart/form-data	                不对字符编码。在使用包含文件上传控件的表单时,必须使用该值。
+text/plain	                        空格转换为 "+" 加号,但不对特殊字符编码。
+```
+
+所以,创建新的表单html文件, 命名为upload.gtpl, html代码应该类似于:
+
+```
+<html>
+<head>
+	<title>上传文件</title>
+</head>
+<body>
+<form enctype="multipart/form-data" action="/upload" method="post">
+  <input type="file" name="uploadfile" />
+  <input type="hidden" name="token" value="{{.}}"/>
+  <input type="submit" value="upload" />
+</form>
+</body>
+</html>
+```
+
+在服务器端,我们增加一个handlerFunc:
+
+```
+http.HandleFunc("/upload", upload)
+// 处理/upload 逻辑
+func upload(w http.ResponseWriter, r *http.Request) {
+	fmt.Println("method:", r.Method) // 获取请求的方法
+	if r.Method == "GET" {
+		crutime := time.Now().Unix()
+		h := md5.New()
+		io.WriteString(h, strconv.FormatInt(crutime, 10))
+		token := fmt.Sprintf("%x", h.Sum(nil))
+
+		t, _ := template.ParseFiles("upload.gtpl")
+		t.Execute(w, token)
+	} else {
+		r.ParseMultipartForm(32 << 20)
+		file, handler, err := r.FormFile("uploadfile")
+		if err != nil {
+			fmt.Println(err)
+			return
+		}
+		defer file.Close()
+		fmt.Fprintf(w, "%v", handler.Header)
+		f, err := os.OpenFile("./test/"+handler.Filename, os.O_WRONLY|os.O_CREATE, 0666)  // 此处假设当前目录下已存在test目录
+		if err != nil {
+			fmt.Println(err)
+			return
+		}
+		defer f.Close()
+		io.Copy(f, file)
+	}
+}
+```
+
+通过上面的代码可以看到,处理文件上传我们需要调用`r.ParseMultipartForm`,里面的参数表示`maxMemory`,
+调用`ParseMultipartForm`之后,上传的文件存储在`maxMemory`大小的内存里面,如果文件大小超过了`maxMemory`,那么剩下的部分将存储在系统的临时文件中。
+我们可以通过`r.FormFile`获取上面的文件句柄,然后实例中使用了`io.Copy`来存储文件。
+
+> 获取其他非文件字段信息的时候就不需要调用`r.ParseForm`,因为在需要的时候Go自动会去调用。而且`ParseMultipartForm`调用一次之后,后面再次调用不会再有效果。
+
+通过上面的实例我们可以看到我们上传文件主要三步处理：
+
+1. 表单中增加enctype="multipart/form-data"
+2. 服务端调用`r.ParseMultipartForm`,把上传的文件存储在内存和临时文件中。
+3. 使用`r.FormFile`获取文件句柄,然后对文件进行存储等处理。
+
+文件handler是multipart.FileHeader,里面存储了如下结构信息
+
+```
+type FileHeader struct {
+	Filename string
+	Header   textproto.MIMEHeader
+	// contains filtered or unexported fields
+}
+```
+
+我们通过上面的实例代码打印出来上传文件的信息如下:
+
+![打印文件上传后服务器端接受的信息](images/form_upload.png?raw=true)
+
+### 客户端上传文件
+
+我们上面的例子演示了如何通过表单上传文件,然后在服务器端处理文件,其实Go支持模拟客户端表单功能支持文件上传,详细用法请看如下示例：
+
+```
+package main
+
+import (
+	"bytes"
+	"fmt"
+	"io"
+	"io/ioutil"
+	"mime/multipart"
+	"net/http"
+	"os"
+)
+
+func postFile(filename string, targetUrl string) error {
+	bodyBuf := &bytes.Buffer{}
+	bodyWriter := multipart.NewWriter(bodyBuf)
+
+	//关键的一步操作
+	fileWriter, err := bodyWriter.CreateFormFile("uploadfile", filename)
+	if err != nil {
+		fmt.Println("error writing to buffer")
+		return err
+	}
+
+	// 打开文件句柄操作
+	fh, err := os.Open(filename)
+	if err != nil {
+		fmt.Println("error opening file")
+		return err
+	}
+	defer fh.Close()
+	
+	//iocopy
+	_, err = io.Copy(fileWriter, fh)
+	if err != nil {
+		return err
+	}
+
+	contentType := bodyWriter.FormDataContentType()
+	bodyWriter.Close()
+
+	resp, err := http.Post(targetUrl, contentType, bodyBuf)
+	if err != nil {
+		return err
+	}
+	defer resp.Body.Close()
+	resp_body, err := ioutil.ReadAll(resp.Body)
+	if err != nil {
+		return err
+	}
+	fmt.Println(resp.Status)
+	fmt.Println(string(resp_body))
+	return nil
+}
+
+// sample usage
+func main() {
+	target_url := "http://localhost:9090/upload"
+	filename := "./astaxie.pdf"
+	postFile(filename, target_url)
+}
+```
+
+上面的例子详细展示了客户端如何向服务器上传一个文件的例子,客户端通过multipart.Write把文件的文本流写入一个缓存中,然后调用http的Post方法把缓存传到服务器。
+
+> 如果你还有其他普通字段例如username之类的需要同时写入,那么可以调用multipart的WriteField方法写很多其他类似的字段。
