@@ -4,5 +4,5 @@
 
 * [Mac常用设置](MAC_SETTINGS.md)
 * [Mac必装软件](MAC_SOFT_WARE.md)
-* [Mac终端神器](MAC_TERMINAL.md)
+* [Mac终端神器](mac_terminal.md)
 * [Mac常见问题](MAC_FAQ.md)
